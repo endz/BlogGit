@@ -253,18 +253,18 @@ app.controller('mainController',
         $scope.filteredItems = $filter('orderBy')($scope.archive, 'date',true);
         $scope.filteredItems = $filter('postFilter')($scope.filteredItems, $scope.start, $scope.numPosts);
     };
+    
     // user prompts for login/upload/etc
     $scope.modalPrompt = function(){
+        $rootScope.json = '[{"settings": '+angular.toJson($scope.settings) + ',"archive":' +angular.toJson($scope.archive) + '}]';
         $modal.open({
             templateUrl: 'partials/modal.html',
             controller: function($scope){
-
                 $scope.submit = function(modalForm) {
-                   var json = 'test 3';
                    //get sha of the file we want to overwrite
                    GitHub.getRepoContents(modalForm.username, 'data.json').then(function(fileInfo){
                         // Once we have the sha of the file... save new file
-                        GitHub.saveData(modalForm.username, modalForm.password, json, fileInfo.sha).then(function(data) {
+                        GitHub.saveData(modalForm.username, modalForm.password, $rootScope.json, fileInfo.sha).then(function(data) {
                             if(data.message)
                                 toaster.pop("warning", "Error saving archive...", data.message);
                             else if(data.content)

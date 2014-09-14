@@ -19,7 +19,7 @@ app.factory('GitHub', ['$q', '$http', function($q, $http) {
                 url: API+'users/'+user+'/repos',
             }).success(function(data, status, headers, config) {
                 deferred.resolve(data);
-            }).error(function(err){console.log(err);});
+            }).error(function(err){ deferred.resolve(err);});
             return deferred.promise;
         },
         //GET /repos/:owner/:repo/contents/:path
@@ -30,7 +30,7 @@ app.factory('GitHub', ['$q', '$http', function($q, $http) {
                 url: API+'repos/'+user+'/'+user+'.github.io/contents/'+file,
             }).success(function(data, status, headers, config) {
                 deferred.resolve(data);
-            }).error(function(err){console.log(err);});
+            }).error(function(err){ deferred.resolve(err);});
             return deferred.promise;
         },
         getData : function(user) {
@@ -40,7 +40,7 @@ app.factory('GitHub', ['$q', '$http', function($q, $http) {
                 url: 'data.json',
             }).success(function(data, status, headers, config) {
                 deferred.resolve(data);
-            }).error(function(err){console.log(err);});
+            }).error(function(err){deferred.resolve(err);});
             return deferred.promise;
         },
 
