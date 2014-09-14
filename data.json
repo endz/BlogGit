@@ -1,0 +1,17 @@
+[{
+    "settings": {
+        "authorName"  : "",
+        "authorImg"   : "",
+        "authorBio"   : "",
+        "disqusUrl"   : "",
+        "disqusName"  : "",
+        "authorSocial": {
+            "github"  : "http://github.com",
+            "twitter" : "http://twitter.com",
+            "facebook": "http://facebook.com",
+            "linkedin": "http://linkedin.com",
+            "envelope": "mailto:email@provider.com"
+        }
+    },
+    "archive": []
+}]
